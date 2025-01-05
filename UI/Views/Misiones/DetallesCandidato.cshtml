@@ -1,0 +1,13 @@
+﻿@model Entidades.clsCandidato
+
+<h1>Detalles del candidato</h1>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Nombre:</strong> @Model.Nombre</li>
+    <li class="list-group-item"><strong>Apellidos:</strong> @Model.Apellidos</li>
+    <li class="list-group-item"><strong>Dirección:</strong> @Model.Direccion</li>
+    <li class="list-group-item"><strong>País:</strong> @Model.Pais</li>
+    <li class="list-group-item"><strong>Teléfono:</strong> @Model.Telefono</li>
+    <li class="list-group-item"><strong>Edad:</strong> @(DateTime.Now.Year - Model.FechaNac.Year)</li>
+    <li class="list-group-item"><strong>Precio medio:</strong> @Model.PrecioMedio</li>
+</ul>
+<a asp-action="Index" asp-route-idMision="@Model.Id" class="btn btn-secondary">Volver</a>

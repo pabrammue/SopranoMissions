@@ -1,0 +1,51 @@
+﻿@model MisionesCandidatosViewModel
+
+@{
+    ViewData["Title"] = "Misiones";
+}
+
+<h2>Selecciona una misión</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="misionSeleccionada">Misiones:</label>
+        <select class="form-control" asp-for="MisionSeleccionadaId">
+    @foreach (var mision in Model.Misiones)
+    {
+        <option value="@mision.Id">
+            @mision.Nombre
+        </option>
+    }
+</select>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Mostrar Candidatos</button>
+</form>
+
+@if (Model.Candidatos.Any())
+{
+    <h3>Candidatos Disponibles</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var candidato in Model.Candidatos)
+            {
+                <tr>
+                    <td>@candidato.Nombre @candidato.Apellidos</td>
+                    <td><a href="@Url.Action("DetallesCandidato", "Misiones", new { id = candidato.Id })">Ver detalles</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay candidatos disponibles para esta misión.</p>
+}

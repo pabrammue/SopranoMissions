@@ -1,0 +1,69 @@
+Capa DAL
+
+	clsGestorMisionesDAL
+		List<clsMision> ObtenerMisionesDAL()
+			//Llama a la BBDD y se trae la lista de misiones
+
+	clsGestorCandidatosDAL
+		List<clsCandidato> ObtenerCandidatosDAL()
+			//Llama a la BBDD y se trae la lista de Candidatos
+		
+Capa BL
+
+	clsGestorMisionesBL
+		List<clsMision> ObtenerMisiones()
+			//Devuelve las misiones sin ningun filtro
+		List<clsMision> ObtenerMisionPorId(int id)
+			//Devuelve la mision con el id proporcionado
+			
+	clsGestorCandidatosBL
+		List<clsCandidato> ObtenerCandidatosPorMision(int idMision)
+			//Recibe el id de una mision y devuelve una lista de los candidatos validos para la mision
+		bool ValidarCandidatoPorMision(clsCandidato candidato, int idMision)
+			//Funcion auxiliar que recibe un candidato y la mision para comprobar si es válido para dicha mision
+		int CalcularEdad(DateTime fechaNacimiento)
+			//Funcion auxiliar que recibe la fecha de nacimiento de un candidato y devuelve la edad
+		clsCandidato ObtenerCandidatoPorId(int id)
+			//Recibe el id de un candidato y devuelve el candidato asociado al id
+
+Entidades
+
+	clsCandidato
+		int Id
+		String Nombre
+		String Apellidos
+		String Direccion
+		String Pais
+		int Telefono
+		DateOnly FechaNac
+		int PrecioMedio
+
+	clsMision
+		int Id
+		String Nombre
+		int Dificultad
+
+UI
+
+	/Controllers
+		MisionesContoller
+			Index()
+				//Se llama a ObtenerMisiones y crea una lista de misiones y se inicializa la lista de candidatos vacia y el id de la mision selecccionada como 0
+
+			Index(MisionesCandidatosViewModel viewModel)
+				//Se llama a este Index en lugar del otro cuando se selecciona una mision y se refresca la vista para mostrar el listado de candidatos para la mision seleccionada
+
+			DetallesCandidato()
+				//Recibe el id de un Candidato que mostrará en DetallesCandidato.cshtml
+
+	/Views
+		/Misiones
+			Index.cshtml
+				//En esta vista se mostrará la lista de misiones en un desplegable y debajo la lista de candidatos disponibles para esa mision
+
+			DetallesCandidato.cshtml
+				//En esta vista se mostrarán los datos del candidato seleccionado en la vista Index
+		
+		/ViewModels
+			MisionesCandidatosViewModel
+				//En este viewModel se prepara la lista de misiones, la mision seleccionada y la lista de Candidatos para la vista Index
