@@ -12,7 +12,7 @@ namespace DAL
         /// </summary>
         public List<clsMision> ObtenerMisiones()
         {
-            var misiones = new List<clsMision>();
+            List<clsMision> misiones = new List<clsMision>();
             SqlConnection connection = null;
 
             try
@@ -26,12 +26,12 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            var mision = new clsMision
-                            {
-                                Id = reader.GetInt32(0),
-                                Nombre = reader.GetString(1),
-                                Dificultad = reader.GetInt32(2)
-                            };
+                            clsMision mision = new clsMision
+                            (
+                                reader.GetInt32(0),
+                                reader.GetString(1),
+                                reader.GetInt32(2)
+                            );
                             misiones.Add(mision);
                         }
                     }

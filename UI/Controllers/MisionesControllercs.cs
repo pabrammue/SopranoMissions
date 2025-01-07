@@ -6,6 +6,11 @@ namespace UI.Controllers
 {
     public class MisionesController : Controller
     {
+
+        /// <summary>
+        /// Llama al index con la lista de misiones
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             var misiones = clsGestorMisionesBL.ObtenerMisiones();
@@ -19,6 +24,11 @@ namespace UI.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// hace un post para acceder a los datos de los candidatos disponibles para la mision seleccionada al pulsar el boton
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Index(MisionesCandidatosViewModel viewModel)
         {
@@ -37,6 +47,12 @@ namespace UI.Controllers
             return View(viewModel);
         }
 
+
+        /// <summary>
+        /// Busca los datos completos del Candidato para mostrar sus detalles en una nueva vista
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult DetallesCandidato(int id)
         {
             var candidato = clsGestorCandidatosBL.ObtenerCandidatoPorId(id);

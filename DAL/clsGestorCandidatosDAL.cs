@@ -31,16 +31,16 @@ namespace DAL
                         while (reader.Read())
                         {
                             var candidato = new clsCandidato
-                            {
-                                Id = reader.GetInt32(0),
-                                Nombre = reader.GetString(1),
-                                Apellidos = reader.GetString(2),
-                                Direccion = reader.GetString(3),
-                                Pais = reader.GetString(4),
-                                Telefono = reader.GetString(5),
-                                FechaNac = reader.GetDateTime(6),
-                                PrecioMedio = reader.GetInt32(7)
-                            };
+                            (
+                                reader.GetInt32(0),
+                                reader.GetString(1),
+                                reader.GetString(2),
+                                reader.GetString(3),
+                                reader.GetString(4),
+                                reader.GetString(5),
+                                reader.GetDateTime(6),
+                                reader.GetInt32(7)
+                            );
                             candidatos.Add(candidato);
                         }
                     }
